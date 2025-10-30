@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block title %} Produtos {% endblock %}
+
+{% block main %}
+  <div class = "row">
+    {% for g in goods %}
+      <div class = "col-xl-3 col-lg-4 col-sm-6">
+        <div class = "icon-card mb-30">
+          <div style = "display: flex; flex-direction: column;">
+            <a href = "/products/price/{{ g.id }}">
+              <div class = "icon primary" style = "padding: 10px; margin-bottom: 5px;">
+                <i class = "fa-solid fa-sack-dollar"></i>
+              </div>
+            </a>
+            <a href = "/products">
+              <div class = "icon primary" style = "padding: 10px; margin-top: 5px;">
+              <i class = "fa-solid fa-boxes-stacked"></i>
+            </div>
+            </a>
+          </div>
+
+          <div class = "content">
+            <h6 class = "mb-10"> {{ g.name }} </h6>
+            <h3 class = "text-bold mb-10"> {{ g.quantity }} {{ g.unit }} </h3>
+            <h3 class = "text-bold mb-10"> {{ g.price}} Db </h3>
+            <p class = "text-sm text-danger">
+              <span class = "text-gray"> Valor: {{ g.value }} Db</span>
+            </p>
+          </div>
+        </div>
+        <!-- End Icon Cart -->
+      </div>
+      <!-- End Col -->
+    {% endfor %}
+  </div>
+  <!-- End Row -->
+{% endblock %}

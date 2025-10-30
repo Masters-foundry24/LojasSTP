@@ -1,0 +1,112 @@
+{% extends "base.html" %}
+
+{% block main %}
+  <form method = "post">
+    <div class = "card-style mb-30">
+      <h6 class = "mb-25"> Registre uma compra </h6>
+      <div class = "select-style-1">
+        <label> Produto </label>
+        <div class = "select-position">
+          <select id = "product" name = "product" required = True>
+            <option value = "" disabled selected> Escolhe Produto </option>
+            {% for a in assets %}
+              <option value = {{a.id}}> {{a.name}} ({{a.unit}}) </option>
+            {% endfor %}
+            <option value = "other"> outra </option>
+          </select>
+        </div>
+      </div>
+
+      <div class = "input-style-1">
+        <label> Quantidade </label>
+        <input type = "number" name = "quantity" id = "quantity" placeholder = "0" step = 1 required = True min = 0/>
+      </div>
+
+      <div class = "select-style-1" id = "question_3" style = "display: none;">
+        <label> Qual é a unidade de medida? </label>
+        <div class = "select-position">
+          <select id = "unit" name = "unit">
+            <option value = "" disabled selected> Escolhe unidade </option>
+            <option value = "kg"> kg </option>
+            <option value = "g"> g </option>
+            <option value = "caixa"> caixa </option>
+            <option value = "saca"> saca </option>
+            <option value = "l"> l </option>
+            <option value = "ml"> ml </option>
+            <option value = "objeto"> objeto </option>
+          </select>
+        </div>
+      </div>
+
+      <div class = "input-style-1">
+        <label> Valor gasto (Db) </label>
+        <input type = "number" name = "cost" id = "cost" placeholder = "0" step = 1 required = True min = 0/>
+      </div>
+
+      <div class = "input-style-1" id = "question_5" style = "display: none;">
+        <label> Nome do Produto </label>
+        <input type = "text" name = "name" id = "name" placeholder = "producto"/>
+      </div>
+
+      <div class = "select-style-1" id = "question_6" style = "display: none;">
+        <label> Este ativo estará à venda? </label>
+        <div class = "select-position">
+          <select id = "is_good" name = "is_good">
+            <option value = "" disabled selected> Escolhe </option>
+            <option value = "yes"> Sim </option>
+            <option value = "no"> Não </option>
+          </select>
+        </div>
+      </div>
+
+      <div class = "input-style-1" id = "question_7" style = "display: none;">
+        <label> Preço para vender por unidade (Db) </label>
+        <input type = "number" name = "price" id = "price" placeholder = "0" step = 1 min = 0/>
+      </div>
+
+      <div class = "input-style-1">
+        <button type = "submit" id = "menu-toggle" class = "main-btn primary-btn btn-hover">
+          Colocar
+        </button>
+      </div>
+    </div>
+  </form>
+{% endblock %}
+
+
+{% block scripts %}
+  <script>
+    const product = document.getElementById('product');
+    const is_good = document.getElementById('is_good');
+    const question_3 = document.getElementById('question_3');
+    const question_5 = document.getElementById('question_5');
+    const question_6 = document.getElementById('question_6');
+    const question_7 = document.getElementById('question_7');
+
+    product.addEventListener("change", function() {
+      if (this.value === 'other') {
+        question_3.style.display = 'block';
+        question_5.style.display = 'block';
+        question_6.style.display = 'block';
+        if (is_good.value === "yes") {
+            question_7.style.display = 'block';
+        } else {
+            question_7.style.display = 'none';
+        }
+      } else {
+        question_3.style.display = 'none';
+        question_5.style.display = 'none';
+        question_6.style.display = 'none';
+        question_7.style.display = 'none';
+      }
+    });
+
+    is_good.addEventListener("change", function() {
+      if (this.value === 'yes') {
+        question_7.style.display = 'block';
+      } else {
+        question_7.style.display = 'none';
+      }
+    });
+  </script>
+{% endblock %}

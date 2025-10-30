@@ -1,0 +1,93 @@
+{% extends "base.html" %}
+
+{% block title %} Jornal {% endblock %}
+
+{% block main %}
+  <!-- ========== tables-wrapper start ========== -->
+  <div class = "tables-wrapper">
+    <div class = "row">
+      <div class = "col-lg-12">
+        <div class = "card-style mb-30">
+          <div class = "table-wrapper table-responsive">
+            <table class = "table">
+              <thead>
+                <tr>
+                  <th>
+                    <h6></h6>
+                  </th>
+                  <th>
+                    <h6> Tempo </h6>
+                  </th>
+                  <th>
+                    <h6> Descrição </h6>
+                  </th>
+                  <th>
+                    <h6> Dinheiro </h6>
+                  </th>
+                  <th>
+                    <h6> Valor </h6>
+                  </th>
+                </tr>
+                <!-- end table row-->
+              </thead>
+              <tbody>
+
+                <tr>
+                  <td>
+                  </td>
+                  <td class = "min-width">
+                  </td>
+                  <td class = "min-width">
+                  </td>
+                  <td class = "min-width">
+                    <p style = "text-align: right;"> {{ store.cash }} Db </p>
+                  </td>
+                  <td class = "min-width">
+                    <p style = "text-align: right;"> {{ store.equity }} Db </p>
+                  </td>
+                </tr>
+                
+                {% for e in entries %}
+                  <tr>
+                    <td>
+                      {% if e.entry_type == 1 %}
+                        <i class = "fa-solid fa-file-import"></i>
+                      {% elif e.entry_type == 2 %}
+                        <i class = "fa-solid fa-file-export"></i>
+                      {% elif e.entry_type == 3 %}
+                        <i class = "fa-solid fa-coins"></i>
+                      {% elif e.entry_type == 4 %}
+                        <i class = "fa-solid fa-truck-fast"></i>
+                      {% elif e.entry_type == 5 %}
+                        <i class = "fa-solid fa-hand-holding-dollar"></i>
+                      {% elif e.entry_type == 6 %}
+                        <i class = "fa-solid fa-shop"></i>
+                      {% endif %}
+                    </td>
+                    <td class = "min-width">
+                      <p> {{e.time}} </p>
+                    </td>
+                    <td class = "min-width">
+                      <p> {{ e.message }} </p>
+                    </td>
+                    <td class = "min-width">
+                      <p style = "text-align: right;"> {{ e.cash }} Db </p>
+                    </td>
+                    <td class = "min-width">
+                      <p style = "text-align: right;"> {{ e.equity }} Db </p>
+                    </td>
+                  </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+            <!-- end table -->
+          </div>
+        </div>
+        <!-- end card -->
+      </div>
+      <!-- end col -->
+    </div>
+    <!-- end row -->
+  </div>
+  <!-- ========== tables-wrapper end ========== -->
+{% endblock %}

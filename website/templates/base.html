@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang = "pt">
+  <head>
+    <meta charset = "UTF-8" />
+    <meta http-equiv = "X-UA-Compatible" content = "IE=edge" />
+    <meta name = "viewport" content = "width=device-width, initial-scale=1.0" />
+    <link rel = "shortcut icon" href = "{{ url_for('static', filename = 'images/favicon.svg') }}" type = "image/x-icon" />
+    <title> Lojas STP </title>
+
+    <!-- ========== All CSS files linkup ========= -->
+    <link rel = "stylesheet" href = "{{ url_for('static', filename = 'css/bootstrap.min.css') }}" />
+    <link rel = "stylesheet" href = "{{ url_for('static', filename = 'css/lineicons.css') }}" />
+    <link rel = "stylesheet" href = "{{ url_for('static', filename = 'css/materialdesignicons.min.css') }}" />
+    <link rel = "stylesheet" href = "{{ url_for('static', filename = 'css/fullcalendar.css') }}" />
+    <link rel = "stylesheet" href = "{{ url_for('static', filename = 'css/main.css') }}" />
+
+    <link rel = "stylesheet" href = "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"/>
+  </head>
+  <body>
+    <!-- ======== Preloader =========== -->
+    <div id = "preloader">
+      <div class = "spinner"></div>
+    </div>
+    <!-- ======== Preloader =========== -->
+
+    <!-- ======== sidebar-nav start =========== -->
+    <aside class = "sidebar-nav-wrapper">
+      <div class = "navbar-logo" style = "display: flex; align-items: center;">
+        <img src = "{{ url_for('static', filename = 'images/logo/menu.png') }}" alt = "logo"/>
+        <span><b>Lojas</b>STP</span>
+      </div>
+      <nav class = "sidebar-nav">
+        <ul>
+          <li class = "nav-item">
+            <a href = "/">
+              <span class = "icon" style = "width: 30px;">
+                <i class = "fa-solid fa-house-chimney"></i>
+              </span>
+              <span class = "text"> Casa </span>
+            </a>
+          </li>
+
+          <li class="nav-item nav-item-has-children">
+            <a href = "#0" class = "collapsed" data-bs-toggle = "collapse" 
+              data-bs-target = "#ddmenu_2" aria-controls = "ddmenu_2"
+              aria-expanded = "false" aria-label = "Toggle navigation">
+              <span class = "icon" style = "width: 30px;">
+                <i class = "fa-solid fa-file-contract"></i>
+              </span>
+              <span class = "text"> Lucro </span>
+            </a>
+            <ul id = "ddmenu_2" class = "collapse dropdown-nav">
+              <li>
+                <a href = "/report/oct25"> Outubro 2025 </a>
+              </li>
+              <li>
+                <a href = "/report/nov25"> Novembro 2025 </a>
+              </li>
+              <li>
+                <a href = "/report/dec25"> Dezembro 2025 </a>
+              </li>
+            </ul>
+          </li>
+
+          <li class = "nav-item">
+            <a href = "/balance">
+              <span class = "icon" style = "width: 30px;">
+                <i class = "fa-solid fa-scale-balanced"></i>
+              </span>
+              <span class = "text"> Balanço </span>
+            </a>
+          </li>
+
+          <li class = "nav-item">
+            <a href = "/journal">
+              <span class = "icon" style = "width: 30px;">
+                <i class = "fa-solid fa-book"></i>
+              </span>
+              <span class = "text"> Jornal </span>
+            </a>
+          </li>
+
+          <li class = "nav-item">
+            <a href = "/bills">
+              <span class = "icon" style = "width: 30px;">
+                <i class = "fa-solid fa-coins"></i>
+              </span>
+              <span class = "text"> Despesas </span>
+            </a>
+          </li>
+
+          <li class = "nav-item">
+            <a href = "/products">
+              <span class = "icon" style = "width: 30px;">
+                <i class = "fa-solid fa-shop"></i>
+              </span>
+              <span class = "text"> Produtos </span>
+            </a>
+          </li>
+
+          <li class = "nav-item">
+            <a href = "/purchases">
+              <span class = "icon" style = "width: 30px;">
+                <i class = "fa-solid fa-file-import"></i>
+              </span>
+              <span class = "text"> Compra </span>
+            </a>
+          </li>
+
+          <li class = "nav-item">
+            <a href = "/sales">
+              <span class = "icon" style = "width: 30px;">
+                <i class = "fa-solid fa-file-export"></i>
+              </span>
+              <span class = "text"> Venda </span>
+            </a>
+          </li>
+
+        </ul>
+      </nav>
+      <div class="promo-box">
+        <div class="promo-icon">
+          <img class="mx-auto" src = "{{ url_for('static', filename = 'images/logo/logo-icon-big.svg') }}" alt="Logo">
+        </div>
+      </div>
+    </aside>
+    <div class="overlay"></div>
+    <!-- ======== sidebar-nav end =========== -->
+
+    <!-- ======== main-wrapper start =========== -->
+    <main class="main-wrapper">
+      <!-- ========== header start ========== -->
+      <header class="header">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-lg-5 col-md-5 col-6">
+              <div class="header-left d-flex align-items-center">
+                <div class="menu-toggle-btn mr-15">
+                  <button id="menu-toggle" class="main-btn primary-btn btn-hover">
+                    <i class="lni lni-chevron-left me-2"></i> Menu
+                  </button>
+                </div>
+                <div class="header-search d-none d-md-flex">
+                  <h1 class="mb-10"> Gestão de Lojas STP</h1>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-7 col-md-7 col-6">
+              <div class="header-right">
+                <!-- profile start -->
+                <div class="profile-box ml-15">
+                  <button class="dropdown-toggle bg-transparent border-0" type="button" id="profile"
+                    data-bs-toggle="dropdown" aria-expanded="false">
+                    <div class="profile-info">
+                      <div class="info">
+                        <div class="image">
+                          <img src = "{{ url_for('static', filename = 'images/profile/profile.png') }}" alt="" />
+                        </div>
+                        <div>
+                          <h6 class="fw-500"> Loja Quaresma</h6>
+                          <p> Pascoal Quaresma </p>
+                        </div>
+                      </div>
+                    </div>
+                  </button>
+                </div>
+                <!-- profile end -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+      <!-- ========== header end ========== -->
+
+      <!-- ========== table components start ========== -->
+      <section class="table-components">
+        <div class="container-fluid">
+          <!-- ========== title-wrapper start ========== -->
+          <div class="title-wrapper pt-30">
+            <div class="row align-items-center">
+              <div class="col-md-6">
+                <div class="title">
+                  <h2> {% block title %} {% endblock %} </h2>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- ========== title-wrapper end ========== -->
+
+          {% block main %} {% endblock %}
+        </div>
+        <!-- end container -->
+      </section>
+      <!-- ========== table components end ========== -->
+
+      <!-- ========== footer start =========== -->
+      <footer class = "footer">
+        <div class = "container-fluid">
+          <div class = "row">
+            <div class = "col-md-6 order-last order-md-first">
+              <div class = "copyright text-center text-md-start">
+                <p class = "text-sm">
+                  Loja Quaresma é uma parte do Masters Império Negocial.
+                </p>
+              </div>
+            </div>
+            <div class = "col-md-6">
+              <div class = "terms d-flex justify-content-center justify-content-md-end">
+                <a href = "/contract" class = "text-sm"> Contrato </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </footer>
+      <!-- ========== footer end =========== -->
+    </main>
+    <!-- ======== main-wrapper end =========== -->
+
+    <!-- ========= All Javascript files linkup ======== -->
+    <script src = "{{ url_for('static', filename = 'js/bootstrap.bundle.min.js') }}"></script>
+    <script src = "{{ url_for('static', filename = 'js/Chart.min.js') }}"></script>
+    <script src = "{{ url_for('static', filename = 'js/dynamic-pie-chart.js') }}"></script>
+    <script src = "{{ url_for('static', filename = 'js/moment.min.js') }}"></script>
+    <script src = "{{ url_for('static', filename = 'js/fullcalendar.js') }}"></script>
+    <script src = "{{ url_for('static', filename = 'js/jvectormap.min.js') }}"></script>
+    <script src = "{{ url_for('static', filename = 'js/world-merc.js') }}"></script>
+    <script src = "{{ url_for('static', filename = 'js/polyfill.js') }}"></script>
+    <script src = "{{ url_for('static', filename = 'js/main.js') }}"></script>
+    {% block scripts %}
+    {% endblock %}
+  </body>
+</html>

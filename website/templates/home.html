@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+
+{% block title %} Casa {% endblock %}
+
+{% block main %}
+  <div class = "row">
+    <div class = "col-xl-3 col-lg-4 col-sm-6">
+      <div class = "icon-card mb-30">
+        <div class = "icon purple">
+          <i class = "fa-solid fa-cart-shopping"></i>
+        </div>
+        <div class = "content">
+          <h6 class = "mb-10"> Receitas </h6>
+          <h3 class = "text-bold mb-10"> {{ results.revenue }} Db </h3>
+          <p class = "text-sm text-success">
+            <span class = "text-gray"> Novembro 2025 </span>
+          </p>
+        </div>
+      </div>
+      <!-- End Icon Cart -->
+    </div>
+    <!-- End Col -->
+    <div class = "col-xl-3 col-lg-4 col-sm-6">
+      <div class = "icon-card mb-30">
+        <div class = "icon success">
+          <i class = "fa-solid fa-boxes-stacked"></i>
+        </div>
+        <div class = "content">
+          <h6 class = "mb-10"> Lucro de Bens </h6>
+          <h3 class = "text-bold mb-10"> {{ results.gross_profit }} Db </h3>
+          <p class = "text-sm text-success">
+            <span class = "text-gray"> Novembro 2025 </span>
+          </p>
+        </div>
+      </div>
+      <!-- End Icon Cart -->
+    </div>
+    <!-- End Col -->
+    <div class = "col-xl-3 col-lg-4 col-sm-6">
+      <div class = "icon-card mb-30">
+        <div class = "icon primary">
+          <i class = "fa-solid fa-coins"></i>
+        </div>
+        <div class = "content">
+          <h6 class = "mb-10"> Despensas </h6>
+          <h3 class = "text-bold mb-10"> {{ results.expenses }} Db </h3>
+          <p class = "text-sm text-danger">
+            <span class = "text-gray"> Novembro 2025 </span>
+          </p>
+        </div>
+      </div>
+      <!-- End Icon Cart -->
+    </div>
+    <!-- End Col -->
+    <div class = "col-xl-3 col-lg-4 col-sm-6">
+      <div class = "icon-card mb-30">
+        <div class = "icon orange">
+          <i class = "fa-solid fa-hand-holding-dollar"></i>
+        </div>
+        <div class = "content">
+          <h6 class = "mb-10"> Lurcro Real</h6>
+          <h3 class = "text-bold mb-10"> {{ results.net_profit }} Db</h3>
+          <p class = "text-sm text-danger">
+            <span class = "text-gray"> Novembro 2025 </span>
+          </p>
+        </div>
+      </div>
+      <!-- End Icon Cart -->
+    </div>
+    <!-- End Col -->
+  </div>
+  <!-- End Row -->
+{% endblock %}

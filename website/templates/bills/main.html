@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block title %} Despesas {% endblock %}
+
+{% block main %}
+  <div class = "row">
+    {% for b in bills %}
+      <div class = "col-xl-3 col-lg-4 col-sm-6">
+        <div class = "icon-card mb-30">
+
+          <div style = "display: flex; flex-direction: column;">
+            <a href = "/bills/pay/{{ b.id }}">
+              <div class = "icon primary" style = "padding: 10px; margin-bottom: 5px;">
+                <i class = "fa-solid fa-credit-card"></i>
+              </div>
+            </a>
+            <a href = "/bills/edit/{{ b.id }}">
+              <div class = "icon primary" style = "padding: 10px; margin-top: 5px;">
+              <i class = "fa-solid fa-pen-to-square"></i>
+            </div>
+            </a>
+          </div>
+          <div class = "content">
+            <h6 class = "mb-10"> {{ b.name }} </h6>
+            <h3 class = "text-bold mb-10"> {{ b.cost}} Db </h3>
+            <p class = "text-sm text-danger">
+              <span class = "text-gray"> {{ b.message }} </span>
+            </p>
+          </div>
+        </div>
+        <!-- End Icon Cart -->
+      </div>
+      <!-- End Col -->
+    {% endfor %}
+  </div>
+  <!-- End Row -->
+{% endblock %}

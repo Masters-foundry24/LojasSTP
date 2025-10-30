@@ -1,0 +1,104 @@
+{% extends "base.html" %}
+
+{% block title %} Balanço {% endblock %}
+
+{% block main %}
+  <!-- ========== tables-wrapper start ========== -->
+  <div class = "tables-wrapper">
+    <div class = "row">
+      <div class = "col-lg-12">
+        <div class = "card-style mb-30">
+          <div class = "table-wrapper table-responsive">
+            <table class = "table">
+              <thead>
+                <tr>
+                  <th>
+                    <h6></h6>
+                  </th>
+                  <th>
+                    <h6> Ativo </h6>
+                  </th>
+                  <th>
+                    <h6> Quant. </h6>
+                  </th>
+                  <th>
+                    <h6> Valor </h6>
+                  </th>
+                </tr>
+                <!-- end table row-->
+              </thead>
+              <tbody>
+
+                <tr>
+                  <td>
+                    <i class = "fa-solid fa-money-bills"></i>
+                  </td>
+                  <td class = "min-width">
+                    <p> Dinheiro </p>
+                  </td>
+                  <td class = "min-width">
+                  </td>
+                  <td class = "min-width">
+                    <p style = "text-align: right;"> {{ store.cash }} Db </p>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td>
+                    <i class = "fa-solid fa-box-open"></i>
+                  </td>
+                  <td class = "min-width">
+                    <p> Produtos </p>
+                  </td>
+                  <td class = "min-width">
+                    <p> {{ goods.quantity }} </p>
+                  </td>
+                  <td class = "min-width">
+                    <p style = "text-align: right;"> {{ goods.value }} Db </p>
+                  </td>
+                </tr>
+                
+                {% for a in assets %}
+                  <tr>
+                    <td>
+                      <i class = "fa-solid fa-chess-rook"></i>
+                    </td>
+                    <td class = "min-width">
+                      <p> {{a.name}} </p>
+                    </td>
+                    <td class = "min-width">
+                      <p> {{ a.quantity }} </p>
+                    </td>
+                    <td class = "min-width">
+                      <p style = "text-align: right;"> {{ a.worth }} Db </p>
+                    </td>
+                  </tr>
+                {% endfor %}
+
+                <tr>
+                  <td>
+                    <i class = "fa-solid fa-scale-balanced"></i>
+                  </td>
+                  <td class = "min-width">
+                    <p> Total </p>
+                  </td>
+                  <td class = "min-width">
+                  </td>
+                  <td class = "min-width">
+                    <p style = "text-align: right;"> {{ store.equity }} Db </p>
+                  </td>
+                </tr>
+
+              </tbody>
+            </table>
+            <!-- end table -->
+          </div>
+        </div>
+        <!-- end card -->
+      </div>
+      <!-- end col -->
+    </div>
+    <!-- end row -->
+  </div>
+  <!-- ========== tables-wrapper end ========== -->
+{% endblock %}

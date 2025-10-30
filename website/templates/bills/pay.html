@@ -1,0 +1,17 @@
+{% extends "bills/main.html" %}
+
+{% block title %} {% endblock %}
+
+{% block main %}
+  <form method = "post">
+    <div class = "card-style mb-30">
+      <h6 class = "mb-25"> Pagar {{ b.name }} por {{ b.cost }} Db </h6>
+
+      <div class = "input-style-1">
+        <button type = "submit" id = "menu-toggle" class = "main-btn primary-btn btn-hover">
+          Confirmar
+        </button>
+      </div>
+    </div>
+  </form>
+{% endblock %}
