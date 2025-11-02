@@ -83,16 +83,6 @@ def create_database(app):
             ))
             db.session.commit()
 
-            time.sleep(3)
-
-            db.session.add(Entry(
-                entry_type = 3, 
-                cash = de.Decimal("-500.00"), 
-                equity = de.Decimal("-500.00"), 
-                message = "Pagando o primero mês de alugel."
-            ))
-            db.session.commit()
-
             db.session.add(Bill(
                 bill_name = "Alugel", 
                 cost = de.Decimal("500.00"), 
@@ -108,30 +98,24 @@ def create_database(app):
                 cost = de.Decimal("180.00"), 
                 message = "Pagar no inicio de cada mês."
             ))
+            db.session.add(Bill(
+                bill_name = "Marketing", 
+                cost = de.Decimal("300.00"), 
+                message = "Pagar no inicio de cada mês."
+            ))
+            db.session.add(Bill(
+                bill_name = "Transporte", 
+                cost = de.Decimal("100.00"), 
+                message = "Pagar cada vez trazer mais produtos."
+            ))
             db.session.commit()
 
             db.session.add(Asset(
                 asset_name = "Arroz", 
-                quantity = 1,
+                quantity = 0,
                 value = de.Decimal("10.00"), 
                 price = de.Decimal("15.00"), 
                 is_good = True,
                 unit = "kg"
-            ))
-            db.session.add(Asset(
-                asset_name = "Sal", 
-                quantity = 1,
-                value = de.Decimal("5.00"), 
-                price = de.Decimal("10.00"), 
-                is_good = True,
-                unit = "kg"
-            ))
-            db.session.add(Asset(
-                asset_name = "Leite", 
-                quantity = 1,
-                value = de.Decimal("40.00"), 
-                price = de.Decimal("50.00"), 
-                is_good = True,
-                unit = "L"
             ))
             db.session.commit()
